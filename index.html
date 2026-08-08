@@ -28,7 +28,7 @@
       color: #ffffff;
     }
 
-    /* Floating Heart Particles Canvas Background */
+    /* Floating Heart Particles Background */
     .heart-particle {
       position: absolute;
       color: #ff4d6d;
@@ -55,6 +55,7 @@
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 77, 109, 0.3);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius: 20px;
       padding: 40px 30px;
       max-width: 500px;
@@ -129,13 +130,13 @@
     <div class="poem">
       <div class="stanza">
         <span>মহাপ্রলয়ে উড়িয়ে দেব</span>
-        <span>যত বিষ্ফোরণের শুকনো ছাই,</span>
-        <span>আমি ব্রহ্মান্ডের প্রতিটি ধুলোয়</span>
+        <span>যত বিস্ফোরণের শুকনো ছাই,</span>
+        <span>আমি ব্রহ্মাণ্ডের প্রতিটি ধুলোয়</span>
         <span>লিখে দেব শুধু তোমাকে চাই।</span>
       </div>
       <div class="stanza">
-        <span>তুমি হয়ত এখনো জানো না</span>
-        <span>কারো সাধ‍্য নেই আমায় আটকায়,</span>
+        <span>তুমি হয়তো এখনো জানো না</span>
+        <span>কারো সাধ্য নেই আমায় আটকায়,</span>
         <span>আমি ভালোবাসবো আবার তোমায়</span>
         <span>যত বেশি ভালোবাসা যায়।</span>
       </div>
@@ -145,24 +146,25 @@
   <!-- JavaScript for Generating Dynamic Floating Hearts -->
   <script>
     function createHeart() {
+      if (document.hidden) return; // ট্যাব নিষ্ক্রিয় থাকলে পার্টিকেল তৈরি বন্ধ রাখবে
+
       const heart = document.createElement('div');
       heart.classList.add('heart-particle');
       heart.innerHTML = '❤️';
       
-      // Random position and size
+      const duration = Math.random() * 3 + 4; // ৪ থেকে ৭ সেকেন্ড
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4 to 7 seconds
-      heart.style.fontSize = Math.random() * 15 + 10 + 'px'; // 10px to 25px
+      heart.style.animationDuration = duration + 's';
+      heart.style.fontSize = Math.random() * 15 + 10 + 'px';
       
       document.body.appendChild(heart);
       
-      // Remove element after animation ends
+      // অ্যানিমেশন শেষ হওয়ার পর এলিমেন্ট মুছে ফেলবে
       setTimeout(() => {
         heart.remove();
-      }, 7000);
+      }, duration * 1000);
     }
 
-    // Create a new heart every 300ms
     setInterval(createHeart, 300);
   </script>
 </body>
