@@ -3,139 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Sanjida ❤️</title>
+  <title>ভালোবাসার বার্তা</title>
+  <!-- Google Bengali Font Import -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
+
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: radial-gradient(circle at center, #1a000c 0%, #050003 100%);
       min-height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-      overflow: hidden;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 90%;
-      position: relative;
-    }
-    h1 {
-      color: #e63946;
-      font-size: 28px;
-      margin-bottom: 30px;
-    }
-    .btn-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 15px;
-      min-height: 80px;
+      font-family: 'Hind Siliguri', sans-serif;
+      overflow: hidden;
       position: relative;
+      color: #ffffff;
     }
-    button {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform 0.2s;
-    }
-    .yes-btn {
-      background-color: #ff4b2b;
-      color: white;
-      box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
-      z-index: 10;
-    }
-    .yes-btn:hover {
-      transform: scale(1.05);
-    }
-    .sorry-btn {
-      background-color: #6c757d;
-      color: white;
+
+    /* Floating Heart Particles Canvas Background */
+    .heart-particle {
       position: absolute;
-      transition: all 0.2s ease;
-    }
-    .flower {
-      position: absolute;
-      font-size: 24px;
-      animation: floatUp 3s linear forwards;
+      color: #ff4d6d;
+      font-size: 20px;
+      user-select: none;
       pointer-events: none;
+      animation: floatUp linear infinite;
     }
+
     @keyframes floatUp {
       0% {
-        transform: translateY(0) scale(1);
+        transform: translateY(100vh) scale(0.5);
         opacity: 1;
       }
       100% {
-        transform: translateY(-100vh) scale(1.5) rotate(360deg);
+        transform: translateY(-10vh) scale(1.2);
         opacity: 0;
+      }
+    }
+
+    /* Central Heart Card Container */
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 77, 109, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 77, 109, 0.2);
+      animation: pulseGlow 3s ease-in-out infinite;
+      z-index: 10;
+    }
+
+    /* Heart Icon Animation at the top */
+    .big-heart {
+      font-size: 60px;
+      color: #ff4d6d;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: beat 1.2s infinite ease-in-out;
+      text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+    }
+
+    /* Poem Styling */
+    .poem {
+      font-size: 1.25rem;
+      line-height: 1.9;
+      color: #ffe6ea;
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .poem span {
+      display: block;
+    }
+
+    .poem .stanza {
+      margin-bottom: 15px;
+    }
+
+    /* Pulse Glow Animation */
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 25px rgba(255, 77, 109, 0.25);
+        border-color: rgba(255, 77, 109, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 45px rgba(255, 77, 109, 0.5);
+        border-color: rgba(255, 77, 109, 0.6);
+      }
+    }
+
+    /* Heart Beat Animation */
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      25% {
+        transform: scale(1.15);
+      }
+      40% {
+        transform: scale(1);
+      }
+      60% {
+        transform: scale(1.12);
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="card" id="card">
-    <h1 id="heading">I Love You Sanjida ❤️</h1>
-    <div class="btn-container">
-      <button class="yes-btn" onclick="acceptLove()">I Love You Too Saif 💖</button>
-      <button class="sorry-btn" id="sorryBtn" onmouseover="moveButton()" onclick="moveButton()">Sorry 🥺</button>
+  <!-- Card Container -->
+  <div class="card">
+    <div class="big-heart">❤</div>
+    <div class="poem">
+      <div class="stanza">
+        <span>মহাপ্রলয়ে উড়িয়ে দেব</span>
+        <span>যত বিষ্ফোরণের শুকনো ছাই,</span>
+        <span>আমি ব্রহ্মান্ডের প্রতিটি ধুলোয়</span>
+        <span>লিখে দেব শুধু তোমাকে চাই।</span>
+      </div>
+      <div class="stanza">
+        <span>তুমি হয়ত এখনো জানো না</span>
+        <span>কারো সাধ‍্য নেই আমায় আটকায়,</span>
+        <span>আমি ভালোবাসবো আবার তোমায়</span>
+        <span>যত বেশি ভালোবাসা যায়।</span>
+      </div>
     </div>
   </div>
 
+  <!-- JavaScript for Generating Dynamic Floating Hearts -->
   <script>
-    const sorryBtn = document.getElementById('sorryBtn');
-
-    // Default Position for Sorry Button
-    sorryBtn.style.right = '20px';
-
-    function moveButton() {
-      // Screen-er jekono jaygay dure sore jabe
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 60);
-
-      sorryBtn.style.position = 'fixed';
-      sorryBtn.style.left = `${x}px`;
-      sorryBtn.style.top = `${y}px`;
-    }
-
-    function acceptLove() {
-      document.getElementById('heading').innerText = "I Love You Too Saif 💖🌹";
-      sorryBtn.style.display = 'none';
-
-      // Flower effect active kora
-      for (let i = 0; i < 40; i++) {
-        setTimeout(createFlower, i * 100);
-      }
-    }
-
-    function createFlower() {
-      const flowers = ['🌸', '🌺', '🌹', '🌷', '✨', '💖', '🌼'];
-      const flower = document.createElement('div');
-      flower.classList.add('flower');
-      flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-
-      flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.bottom = '0px';
-      flower.style.fontSize = (Math.random() * 20 + 20) + 'px';
-
-      document.body.appendChild(flower);
-
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-particle');
+      heart.innerHTML = '❤️';
+      
+      // Random position and size
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4 to 7 seconds
+      heart.style.fontSize = Math.random() * 15 + 10 + 'px'; // 10px to 25px
+      
+      document.body.appendChild(heart);
+      
+      // Remove element after animation ends
       setTimeout(() => {
-        flower.remove();
-      }, 3000);
+        heart.remove();
+      }, 7000);
     }
+
+    // Create a new heart every 300ms
+    setInterval(createHeart, 300);
   </script>
 </body>
 </html>
